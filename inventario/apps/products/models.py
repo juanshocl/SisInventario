@@ -34,7 +34,7 @@ class category(models.Model):
         return self.description
 
 class provider(models.Model):
-    id = models.CharField(max_length=50)
+    id = models.CharField(primary_key=True ,max_length=50)
     businessname = models.CharField(max_length=50)
     categoryProvider = models.ForeignKey(category, on_delete=models.CASCADE, default=None)
     address = models.CharField(max_length=50)
@@ -62,9 +62,9 @@ class products(models.Model):
     buy_price = models.DecimalField(max_digits=5, decimal_places=2)
     sale_price = models.DecimalField( max_digits=5, decimal_places=2)
     categoryProduct = models.ForeignKey(category, on_delete=models.CASCADE, default=None)
-    photos = models.ForeignKey(photos, on_delete=models.CASCADE)
+    photos = models.ForeignKey(photos, on_delete=models.CASCADE, default=False)
     warehouseProduct = models.ForeignKey(warehouse, on_delete=models.CASCADE, default = None)
-    isActive = models.BooleanField()
+    isActive = models.BooleanField(default=False)
 
     def __str__(self):
         return self.description
