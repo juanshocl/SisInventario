@@ -54,7 +54,7 @@ class warehouse(models.Model):
     MinimumStock  = models.IntegerField()
 
 class products(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.CharField(primary_key=True, editable=True, max_length= 14)
     productProvider = models.ForeignKey(provider, on_delete=models.CASCADE, default=None)
     description =  models.CharField(max_length=20)
     creationDate = models.DateField(auto_now=True, auto_now_add=False)
