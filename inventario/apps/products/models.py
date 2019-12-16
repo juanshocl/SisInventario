@@ -17,7 +17,7 @@ class phones(models.Model):
     type = models.IntegerField(choices=PHONETYPES)
 
     def __str__(self):
-        return self.id
+        return self.number
 
 class state(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -34,7 +34,7 @@ class category(models.Model):
         return self.description
 
 class provider(models.Model):
-    id = models.CharField(primary_key=True ,max_length=50)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     businessname = models.CharField(max_length=50)
     categoryProvider = models.ForeignKey(category, on_delete=models.CASCADE, default=None)
     address = models.CharField(max_length=50)
@@ -43,15 +43,21 @@ class provider(models.Model):
     credit = models.BooleanField()
     amount = models.IntegerField()
 
+    def __str__(self):
+        return self.businessname
+
 class photos(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    thumbnail = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None)
-    bigsize = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None)
+    thumbnail = models.ImageField(upload_to='static/img/thumbnail', height_field=None, width_field=None, max_length=None)
+    bigsize = models.ImageField(upload_to='static/img/bigsize', height_field=None, width_field=None, max_length=None)
 
 class warehouse(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     descriptionWarehouse = models.CharField( max_length=50)
     MinimumStock  = models.IntegerField()
+
+    def __str__(self):
+        return self.descriptionWarehouse
 
 class products(models.Model):
     id = models.CharField(primary_key=True, editable=True, max_length= 14)
@@ -62,7 +68,7 @@ class products(models.Model):
     buy_price = models.DecimalField(max_digits=5, decimal_places=2)
     sale_price = models.DecimalField( max_digits=5, decimal_places=2)
     categoryProduct = models.ForeignKey(category, on_delete=models.CASCADE, default=None)
-    photos = models.ForeignKey(photos, on_delete=models.CASCADE, default=False)
+    #photos = models.ForeignKey(photos, on_delete=models.CASCADE, default=False)
     warehouseProduct = models.ForeignKey(warehouse, on_delete=models.CASCADE, default = None)
     isActive = models.BooleanField(default=False)
 

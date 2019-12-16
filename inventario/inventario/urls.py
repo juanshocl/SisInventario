@@ -19,7 +19,8 @@ from django.urls import include, path, re_path
 from apps.products.views import HomeList, CreateProduct
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    #url(r'^admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', HomeList.as_view(), name='home'),
     path('create/', CreateProduct.as_view(), name='create'),
     

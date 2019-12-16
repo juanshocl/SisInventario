@@ -15,7 +15,7 @@ class ProductForm(forms.ModelForm):
             'buy_price',
             'sale_price',
             'categoryProduct',
-            'photos',
+            #'photos',
             'warehouseProduct',
             'isActive',
         ]
@@ -28,18 +28,18 @@ class ProductForm(forms.ModelForm):
             'buy_price':'Precio de compra',
             'sale_price':'Precio de ventas',
             'categoryProduct':'Categoria',
-            'photos':'Fotos',
+            #'photos':'Fotos',
             'warehouseProduct':'Ubicacion',
             'isActive':'Activo',
 
         }
         widgets = {
             'id': forms.TextInput(attrs={'class':'form-control'}),
-            'productProvider': forms.TextInput(attrs={'class':'form-control'}),
+            #'productProvider': forms.TextInput(attrs={'class':'form-control'}),
             'description': forms.TextInput(attrs={'class':'form-control'}),
             'buy_price': forms.TextInput(attrs={'class':'form-control'}),
             'sale_price': forms.TextInput(attrs={'class':'form-control'}),
-            'photos': forms.TextInput(attrs={'class':'form-control'}),
+            #'photos': forms.TextInput(attrs={'class':'form-control'}),
             'photos': forms.TextInput(attrs={'class':'form-control'}),
             'isActive': forms.TextInput(attrs={'required': True, 'class':'form-control'}),   
         }
