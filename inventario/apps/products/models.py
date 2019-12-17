@@ -69,6 +69,8 @@ class products(models.Model):
     sale_price = models.DecimalField( max_digits=5, decimal_places=2)
     categoryProduct = models.ForeignKey(category, on_delete=models.CASCADE, default=None)
     #photos = models.ForeignKey(photos, on_delete=models.CASCADE, default=False)
+    thumbnail = models.ImageField(upload_to='static/img/thumbnail', height_field=None, width_field=None, max_length=None, default=None, blank=True)
+    bigsize = models.ImageField(upload_to='static/img/bigsize', height_field=None, width_field=None, max_length=None, default=None, blank=True)
     warehouseProduct = models.ForeignKey(warehouse, on_delete=models.CASCADE, default = None)
     isActive = models.BooleanField(default=False)
 

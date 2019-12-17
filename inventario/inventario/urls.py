@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include, path, re_path
+from django.conf.urls.static import static
+from django.conf import settings
 from apps.products.views import HomeList, CreateProduct
 
 urlpatterns = [
@@ -24,4 +26,4 @@ urlpatterns = [
     path('', HomeList.as_view(), name='home'),
     path('create/', CreateProduct.as_view(), name='create'),
     
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
