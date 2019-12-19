@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-<meta charset="UTF-8">
-<title>Administracion de Inventario</title>
-<!-- Scripts CSS -->
-{% load staticfiles %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" id="bootstrap-css">
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}" media="screen">
-<link rel="stylesheet" type="text/css" href="{% static 'css/adminx.css'%}" media="screen">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- Scrip JS-->
-<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js'></script>
-<script src="{% static 'js/script.js'%}"></script>
-<script src="{% static 'js/adminx.js'%}"></script>
-<script src="{% static 'js/vendor.js'%}"></script>
-<!-- Fin Scripts -->
+    <meta charset="UTF-8">
+    <title>Administracion de Inventario</title>
+    <!-- Scripts CSS -->
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" id="bootstrap-css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/adminx.css'%}" media="screen">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!-- Scrip JS-->
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js'></script>
+    <script src="{% static 'js/script.js'%}"></script>
+    <script src="{% static 'js/adminx.js'%}"></script>
+    <script src="{% static 'js/vendor.js'%}"></script>
+    <!-- Fin Scripts -->
 </head>
-<!-- partial:index.partial.html -->
-
-
+<!--Body Main Generic-->
 <body class="home">
     <div class="container-fluid display-table">
         <div class="row display-table-row">
@@ -41,7 +39,6 @@
                 </div>
             </div>
             <div class="col-md-10 col-sm-11 display-table-cell v-align">
-                <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
                 <div class="row">
                     <header>
                         <div class="col-md-7">
@@ -73,12 +70,12 @@
                                     <li>
                                         <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
                                     </li>
-                                    <li>
-                                        {% comment %} <a href="#" class="icon-info">
+                                    {% comment %} <li>
+                                        <a href="#" class="icon-info">
                                             <i class="fa fa-bell" aria-hidden="true"></i>
                                             <span class="label label-primary">8</span>
-                                        </a> {% endcomment %}
-                                    </li>
+                                        </a> 
+                                    </li>{% endcomment %}
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{% static 'img/user-pic.jpg'%}" alt="user">
                                             <b class="caret"></b></a>
@@ -89,10 +86,8 @@
                                                     <p class="text-muted small">
                                                         me@jskrishna.com
                                                     </p>
-                                                    <div class="divider">
-                                                    </div>
-                                                        <a href="#" class="view btn-sm active">View Profile</a>
-                                                    </div>
+                                                    <div class="divider"></div>
+                                                    <a href="#" class="view btn-sm active">View Profile</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -131,8 +126,8 @@
 
         </div>
     </div>
-
 </body>
+<!--End Body Main Generic-->
 {% comment %} <script type="text/javascript">
 $(document).ready(function() {
     $('[data-toggle="offcanvas"]').click(function() {
