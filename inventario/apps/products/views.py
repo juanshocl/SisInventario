@@ -15,3 +15,11 @@ class CreateProduct(CreateView):
      template_name = 'crud/create.html'
      form_class = ProductForm
      success_url = reverse_lazy('home')
+
+class ListProducts(ListView):
+     model  = products
+     template_name = 'crud/listProduct.html'
+
+class StatisticsProducts(ListView):
+     model = products
+     template_name = 'statistics/statistics.html'
