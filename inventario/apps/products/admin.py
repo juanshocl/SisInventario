@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
-from apps.products.models import products, provider, category, phones, state, photos, warehouse
+from apps.products.models import products, provider, category, phones, state, photos, warehouses
 
 
 class ProductsAdmin(admin.ModelAdmin):
-    list_display = ('id','productProvider', 'description', 'creationDate', 'lastUpate', 'buy_price', 'sale_price', 'categoryProduct', 'warehouseProduct', 'isActive')
-    fields = ('id','productProvider', 'description', 'buy_price', 'sale_price', 'categoryProduct', 'warehouseProduct', 'isActive')
+    list_display = ('id','productProvider', 'description', 'creationDate', 'lastUpate', 'buy_price', 'sale_price', 'categoryProduct', 'warehouseProduct', 'isActive', 'stock')
+    fields = ('id','productProvider', 'description', 'buy_price', 'sale_price', 'categoryProduct', 'warehouseProduct', 'isActive', 'stock')
 
 admin.site.register(products, ProductsAdmin)
 
@@ -38,6 +38,6 @@ class PhotosAdmin(admin.ModelAdmin):
 admin.site.register(photos, PhotosAdmin)
 
 class WarehouseAdmin(admin.ModelAdmin):
-    list_display = ('descriptionWarehouse', 'MinimumStock')
+    list_display = ('descriptionWarehouse', 'MinimumStock', 'stock')
 
-admin.site.register(warehouse, WarehouseAdmin)
+admin.site.register(warehouses, WarehouseAdmin)

@@ -18,6 +18,7 @@ class ProductForm(forms.ModelForm):
             #'photos',
             'warehouseProduct',
             'isActive',
+            'stock',
         ]
         labels = {
             'id':'Codigo',
@@ -31,6 +32,7 @@ class ProductForm(forms.ModelForm):
             #'photos':'Fotos',
             'warehouseProduct':'Ubicacion',
             'isActive':'Activo',
+            'stock': 'Stock',
 
         }
         widgets = {
@@ -41,5 +43,6 @@ class ProductForm(forms.ModelForm):
             'sale_price': forms.TextInput(attrs={'class':'form-control'}),
             #'photos': forms.TextInput(attrs={'class':'form-control'}),
             'photos': forms.TextInput(attrs={'class':'form-control'}),
-            'isActive': forms.TextInput(attrs={'required': True, 'class':'form-control'}),   
+            'isActive': forms.TextInput(attrs={'required': True, 'class':'form-control'}),  
+            'stock' : forms.TextInput(attrs={'required': True, 'class':'form-control'}),  
         }

@@ -51,10 +51,12 @@ class photos(models.Model):
     thumbnail = models.ImageField(upload_to='static/img/thumbnail', height_field=None, width_field=None, max_length=None)
     bigsize = models.ImageField(upload_to='static/img/bigsize', height_field=None, width_field=None, max_length=None)
 
-class warehouse(models.Model):
+class warehouses(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     descriptionWarehouse = models.CharField( max_length=50)
-    MinimumStock  = models.IntegerField()
+    #product = models.ManyToManyField()
+    stock = models.IntegerField(default=0)
+    MinimumStock  = models.IntegerField(default=0)
 
     def __str__(self):
         return self.descriptionWarehouse
@@ -65,15 +67,20 @@ class products(models.Model):
     description =  models.CharField(max_length=20)
     creationDate = models.DateField(auto_now=True, auto_now_add=False)
     lastUpate = models.DateField(auto_now=True, auto_now_add=False)
-    buy_price = models.DecimalField(max_digits=5, decimal_places=2)
-    sale_price = models.DecimalField( max_digits=5, decimal_places=2)
+    buy_price = models.DecimalField(max_digits=10, decimal_places=2)
+    sale_price = models.DecimalField( max_digits=10, decimal_places=2)
     categoryProduct = models.ForeignKey(category, on_delete=models.CASCADE, default=None)
     #photos = models.ForeignKey(photos, on_delete=models.CASCADE, default=False)
     thumbnail = models.ImageField(upload_to='static/img/thumbnail', height_field=None, width_field=None, max_length=None, default=None, blank=True)
     bigsize = models.ImageField(upload_to='static/img/bigsize', height_field=None, width_field=None, max_length=None, default=None, blank=True)
-    warehouseProduct = models.ForeignKey(warehouse, on_delete=models.CASCADE, default = None)
+    warehouseProduct = models.ForeignKey(warehouses, on_delete=models.CASCADE, default = None)
     isActive = models.BooleanField(default=False)
+    stock = models.IntegerField(default=0)
+    
 
     def __str__(self):
         return self.description
+
+    
+
     

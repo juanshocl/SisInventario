@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="es" >
 <head>
     <meta charset="UTF-8">
     <title>Administracion de Inventario</title>
@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" id="bootstrap-css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}" media="screen">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/adminx.css'%}" media="screen">
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/adminx.css'%}" media="screen"> {% endcomment %}
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <!-- Scrip JS-->
     <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js'></script>
     <script src="{% static 'js/script.js'%}"></script>
-    <script src="{% static 'js/adminx.js'%}"></script>
+    {% comment %} <script src="{% static 'js/adminx.js'%}"></script> {% endcomment %}
     <script src="{% static 'js/vendor.js'%}"></script>
     <!-- Fin Scripts -->
 </head>
@@ -103,7 +103,7 @@
 
     </div>
     <!-- Modal -->
-    <div id="add_project" class="modal fade" role="dialog">
+    <div id="add_project" class="modal fade" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog">
 
             <!-- Modal content-->
