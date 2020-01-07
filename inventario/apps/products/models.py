@@ -46,10 +46,6 @@ class provider(models.Model):
     def __str__(self):
         return self.businessname
 
-# class photos(models.Model):
-#     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-#     thumbnail = models.ImageField(upload_to='static/img/thumbnail', height_field=None, width_field=None, max_length=None)
-#     bigsize = models.ImageField(upload_to='static/img/bigsize', height_field=None, width_field=None, max_length=None)
 
 class warehouses(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -57,13 +53,18 @@ class warehouses(models.Model):
     #product = models.ManyToManyField(products)
     stock = models.IntegerField(default=0)
     MinimumStock  = models.IntegerField(default=0)
-    address  = models.CharField(max_length=50)
-    phones = models.ForeignKey(phones, on_delete=models.CASCADE)
-    first_admin = models.CharField(max_length=50)
-    lastName_admin = models.CharField(max_length=50)
+    address  = models.CharField(max_length=50, default=None)
+    phones = models.ForeignKey(phones, on_delete=models.CASCADE, default=0)
+    first_admin = models.CharField(max_length=50, default=None)
+    lastName_admin = models.CharField(max_length=50, default=None)
 
     def __str__(self):
         return self.descriptionWarehouse
+
+    def get_warehouseName(self):
+        return self.first_admin+' '+self.lastName_admin
+    get_warehouseName.short_description = 'Nombre'
+
 class products(models.Model):
     id = models.CharField(primary_key=True, editable=True, max_length= 14)
     productProvider = models.ForeignKey(provider, on_delete=models.CASCADE, default=None)
@@ -76,12 +77,19 @@ class products(models.Model):
     #photos = models.ForeignKey(photos, on_delete=models.CASCADE, default=False)
     thumbnail = models.ImageField(upload_to='static/img/thumbnail', height_field=None, width_field=None, max_length=None, default=None, blank=True)
     bigsize = models.ImageField(upload_to='static/img/bigsize', height_field=None, width_field=None, max_length=None, default=None, blank=True)
-    warehouseProduct = models.ManyToManyField(warehouses, on_delete=models.CASCADE, default = None)
+    warehouseProduct = models.ManyToManyField(warehouses)
     isActive = models.BooleanField(default=False)
     stock = models.IntegerField(default=0)
     
 
     def __str__(self):
         return self.description
+
+    def get_warehouse(self):
+        #return self.warehouseProduct.descriptionWarehouse
+        return ', '.join([p.descriptionWarehouse for p in self.warehouseProduct.all()])
+        # return "\n".join([p.products for p in self.product.all()])
+    
+    get_warehouse.short_description = 'Almacen' 
 
 

@@ -1,12 +1,13 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
-from apps.products.models import products, provider, category, phones, state, photos, warehouses
+from apps.products.models import products, provider, category, phones, state, warehouses
 
 
 class ProductsAdmin(admin.ModelAdmin):
-    list_display = ('id','productProvider', 'description', 'creationDate', 'lastUpate', 'buy_price', 'sale_price', 'categoryProduct', 'warehouseProduct', 'isActive', 'stock')
-    fields = ('id','productProvider', 'description', 'buy_price', 'sale_price', 'categoryProduct', 'warehouseProduct', 'isActive', 'stock')
+    list_display = ('id','productProvider', 'description', 'creationDate', 'lastUpate', 'buy_price', 'sale_price', 'categoryProduct', 'get_warehouse', 'isActive', 'stock')
+    #fields = ('id','productProvider', 'description', 'buy_price', 'sale_price', 'categoryProduct', 'get_warehouse', 'isActive', 'stock')
 
+    
 admin.site.register(products, ProductsAdmin)
 
 class ProviderAdmin(admin.ModelAdmin):
@@ -32,12 +33,7 @@ class StateAdmin(admin.ModelAdmin):
 
 admin.site.register(state, StateAdmin)
 
-class PhotosAdmin(admin.ModelAdmin):
-    list_display = ('id', 'thumbnail', 'bigsize')
-
-admin.site.register(photos, PhotosAdmin)
-
 class WarehouseAdmin(admin.ModelAdmin):
-    list_display = ('descriptionWarehouse', 'MinimumStock', 'stock')
+    list_display = ('descriptionWarehouse', 'MinimumStock', 'stock', 'address', 'phones', 'get_warehouseName')
 
 admin.site.register(warehouses, WarehouseAdmin)

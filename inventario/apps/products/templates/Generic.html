@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" >
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Administracion de Inventario</title>
@@ -7,18 +8,20 @@
     {% load staticfiles %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" id="bootstrap-css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}" media="screen">
-    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/adminx.css'%}" media="screen"> {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}" media="screen"> {% comment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/adminx.css'%}" media="screen"> {% endcomment %}
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <!-- Scrip JS-->
     <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js'></script>
     <script src="{% static 'js/script.js'%}"></script>
-    {% comment %} <script src="{% static 'js/adminx.js'%}"></script> {% endcomment %}
+    {% comment %}
+    <script src="{% static 'js/adminx.js'%}"></script> {% endcomment %}
     <script src="{% static 'js/vendor.js'%}"></script>
     <!-- Fin Scripts -->
 </head>
 <!--Body Main Generic-->
+
 <body class="home">
     <div class="container-fluid display-table">
         <div class="row display-table-row">
@@ -52,29 +55,27 @@
                                     </button>
                                 </div>
                             </nav>
-                            {% comment %} <div class="search hidden-xs hidden-sm">
+                            {% comment %}
+                            <div class="search hidden-xs hidden-sm">
                                 <input type="text" placeholder="Search" id="search">
                             </div> {% endcomment %}
                         </div>
                         <div class="col-md-5">
                             <div class="header-rightside">
                                 <ul class="list-inline header-top pull-right">
-                                        <li class="hidden-xs">
-                                        {% comment %} <a href="#" class="add-project" data-toggle="modal" data-target="#add_project">Agregar Producto</a> {% endcomment %}
-                                            <a href="#add_project" class="create-product" data-toggle="modal" >Crear Producto</a>
-                                        </li>
-                                        <li class="hidden-xs">
-                                        {% comment %} <a href="#" class="add-project" data-toggle="modal" data-target="#add_project">Agregar Producto</a> {% endcomment %}
-                                            <a class="add-project" data-toggle="modal" data-target="#add_project">Actualizar Stock</a>
-                                        </li>
+                                    <li class="hidden-xs">
+                                        {% comment %} <a href="#" class="add-project" data-toggle="modal" data-target="#create_product">Agregar Producto</a> {% endcomment %}
+                                        <a class="add-project" data-toggle="modal" data-target="#create_product">Crear Producto</a>
+                                    </li>
                                     <li>
                                         <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
                                     </li>
-                                    {% comment %} <li>
+                                    {% comment %}
+                                    <li>
                                         <a href="#" class="icon-info">
                                             <i class="fa fa-bell" aria-hidden="true"></i>
                                             <span class="label label-primary">8</span>
-                                        </a> 
+                                        </a>
                                     </li>{% endcomment %}
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{% static 'img/user-pic.jpg'%}" alt="user">
@@ -103,24 +104,70 @@
 
     </div>
     <!-- Modal -->
-    <div id="add_project" class="modal fade" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog">
+    <div id="create_product" class="modal fade" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header login-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">Add Project</h4>
+                    <h4 class="modal-title">Crear Producto</h4>
                 </div>
                 <div class="modal-body">
-                            <input type="text" placeholder="Project Title" name="name">
-                            <input type="text" placeholder="Post of Post" name="mail">
-                            <input type="text" placeholder="Author" name="passsword">
-                            <textarea placeholder="Desicrption"></textarea>
-                    </div>
+                    <form class="form" action="{% url 'create' %}" method='post' enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-3 col-sm-3">
+                                        <input class="form-control" type="text" placeholder="Codigo Producto" name="codProd">
+                                    </div>
+                                    <div class="col-4 col-sm-3">
+                                        <input class="form-control" type="text" placeholder="Proveedor" name="productProvider">
+                                    </div>
+                                    <div class="col-5 col-sm-6">
+                                        <input class="form-control" type="text" placeholder="Descripción" name="description">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-2 col-sm-2">
+                                        <input class="form-control" type="text" placeholder="Precio de Compra" name="buy_price">
+                                    </div>
+                                    <div class="col-2 col-sm-2">
+                                        <input class="form-control" type="text" placeholder="Precio de venta" name="sale_price">
+                                    </div>
+                                    <div class="col-2 col-sm-3">
+                                        <input class="form-control" type="text" placeholder="Categoria de producto" name="categoryProduct">
+                                    </div>
+                                    <div class="col-2 col-sm-2">
+                                        <input class="form-control" type="text" placeholder="Almacen" name="warehouseProduct">
+                                    </div>
+                                    <div class="col-2 col-sm-2">
+                                        <input class="form-control" type="text" placeholder="Stock" name="stock">
+                                    </div>
+                                    <div class="col-2 col-sm-1">
+                                        <div class="form-check">
+                                            <!-- <input class="form-control" type="text" placeholder="Estado" name="isActive"> -->
+                                            <input class="form-check-input" type="checkbox" id="isActive">
+                                            <label class="form-check-label" for="isActive">
+                                      Activo
+                                    </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-5 col-sm-6">
+                                        <input class="form-control" type="file" placeholder="imagen" name="bigsize">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 <div class="modal-footer">
-                    <button type="button" class="cancel" data-dismiss="modal">Close</button>
-                    <button type="button" class="add-project" data-dismiss="modal">Save</button>
+                    <button type="button" class="cancel" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
 
@@ -128,11 +175,13 @@
     </div>
 </body>
 <!--End Body Main Generic-->
-{% comment %} <script type="text/javascript">
-$(document).ready(function() {
-    $('[data-toggle="offcanvas"]').click(function() {
-        $("#navigation").toggleClass("hidden-xs");
+{% comment %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('[data-toggle="offcanvas"]').click(function() {
+            $("#navigation").toggleClass("hidden-xs");
+        });
     });
-});
 </script> {% endcomment %}
+
 </html>
