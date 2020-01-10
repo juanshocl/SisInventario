@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 from django.conf.urls.static import static
 from django.conf import settings
-from apps.products.views import HomeList, CreateProduct, ListProducts, StatisticsProducts, UpdateProducts
+from apps.products.views import HomeList, CreateProduct, ListProducts, StatisticsProducts, UpdateProducts, test
 
 urlpatterns = [
     #url(r'^admin/', admin.site.urls),
@@ -28,5 +28,6 @@ urlpatterns = [
     path('list/', ListProducts.as_view(), name='list'),
     path('update/', UpdateProducts.as_view(), name='update' ),
     path('statistics/', StatisticsProducts.as_view(), name='statistics'),
+    path('test/', test.as_view(), name='test'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

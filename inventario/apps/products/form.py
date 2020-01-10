@@ -43,6 +43,6 @@ class ProductForm(forms.ModelForm):
             'sale_price': forms.TextInput(attrs={'class':'form-control'}),
             #'photos': forms.TextInput(attrs={'class':'form-control'}),
             'photos': forms.TextInput(attrs={'class':'form-control'}),
-            'isActive': forms.TextInput(attrs={'required': True, 'class':'form-control'}),  
+            'isActive': forms.CheckboxInput(attrs={'required': True, 'class':'form-control'}),  
             'stock' : forms.TextInput(attrs={'required': True, 'class':'form-control'}),  
         }

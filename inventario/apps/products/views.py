@@ -53,3 +53,7 @@ class UpdateProducts(UpdateView):
 class StatisticsProducts(ListView):
      model = products
      template_name = 'statistics/statistics.html'
+
+class test(ListView):
+     model = products
+     template_name = 'test.html'
