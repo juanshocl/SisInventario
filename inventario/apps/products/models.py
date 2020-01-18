@@ -80,8 +80,10 @@ class products(models.Model):
     warehouseProduct = models.ManyToManyField(warehouses)
     isActive = models.BooleanField(default=False)
     stock = models.IntegerField(default=0)
-    
 
+    class Meta:
+            ordering = ["id"]
+    
     def __str__(self):
         return self.description
 

@@ -37,10 +37,12 @@ class ProductForm(forms.ModelForm):
         }
         widgets = {
             'id': forms.TextInput(attrs={'class':'form-control'}),
-            #'productProvider': forms.TextInput(attrs={'class':'form-control'}),
+            'productProvider': forms.Select(attrs={'class':'form-control'}),
             'description': forms.TextInput(attrs={'class':'form-control'}),
             'buy_price': forms.TextInput(attrs={'class':'form-control'}),
             'sale_price': forms.TextInput(attrs={'class':'form-control'}),
+            'categoryProduct': forms.Select(attrs={'class':'form-control'}),
+            'warehouseProduct': forms.SelectMultiple(attrs={'class':'form-control'}),
             #'photos': forms.TextInput(attrs={'class':'form-control'}),
             'photos': forms.TextInput(attrs={'class':'form-control'}),
             'isActive': forms.CheckboxInput(attrs={'required': True, 'class':'form-control'}),  

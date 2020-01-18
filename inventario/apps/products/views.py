@@ -9,6 +9,14 @@ from apps.products.form import ProductForm
 class HomeList(ListView):
      model = products
      template_name = 'home/home.html'
+     # ordering = ['id']
+
+class createp(CreateView):
+    model = products
+    form_class = ProductForm
+    template_name = "crud/crearProducto.html"
+    success_url = reverse_lazy('home')
+
 
 class CreateProduct(CreateView):
      model = products
@@ -16,9 +24,12 @@ class CreateProduct(CreateView):
      form_class = ProductForm
      success_url = reverse_lazy('home')
 
+
+
 class ListProducts(ListView):
      model  = products
      template_name = 'crud/listProduct.html'
+     
      #stock  = warehouses.objects.filter(id=products.warehouseProduct)
 
 
@@ -46,7 +57,8 @@ class ListProducts(ListView):
 
 class UpdateProducts(UpdateView):
      model = products
-     template_name = 'crud/updateProduct.html'
+     
+     template_name = 'crud/editProduct.html'
      form_class = ProductForm
      success_url = reverse_lazy('home')
 
@@ -57,3 +69,9 @@ class StatisticsProducts(ListView):
 class test(ListView):
      model = products
      template_name = 'test.html'
+
+class ProductDelete(DeleteView):
+     model = products
+     template_name  = 'crud/deleteProduct.html'
+     success_url  = reverse_lazy('home')
+

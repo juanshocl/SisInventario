@@ -1,0 +1,79 @@
+{% comment %}
+<div id="create_product" class="modal fade" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+</div> {% endcomment %}
+<div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;X</span>
+            </button>
+            <h4 class="modal-title">Crear Producto</h4>
+        </div>
+        <div class="modal-body">
+            <form class="form" action="{% url 'createp' %}" method='POST'>
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-3 col-sm-3">
+                                {% comment %} <input class="form-control" type="text" placeholder="Codigo Producto" name="id"> {% endcomment %} {{form.id}}
+                            </div>
+                            <div class="col-4 col-sm-3">
+                                {% comment %} <input class="form-control" type="text" placeholder="Proveedor" name="productProvider"> {% endcomment %} {{form.productProvider}}
+                            </div>
+                            <div class="col-5 col-sm-6">
+                                {% comment %} <input class="form-control" type="text" placeholder="Descripción" name="description"> {% endcomment %} {{form.description}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 col-sm-2">
+                                {% comment %} <input class="form-control" type="text" placeholder="Precio de Compra" name="buy_price"> {% endcomment %} {{form.buy_price}}
+                            </div>
+                            <div class="col-2 col-sm-2">
+                                {% comment %} <input class="form-control" type="text" placeholder="Precio de venta" name="sale_price"> {% endcomment %} {{form.sale_price}}
+                            </div>
+                            <div class="col-2 col-sm-3">
+                                {% comment %} <input class="form-control" type="text" placeholder="Categoria de producto" name="categoryProduct"> {% endcomment %} {{form.categoryProduct}}
+                            </div>
+                            <div class="col-2 col-sm-2">
+                                {% comment %} <input class="form-control" type="text" placeholder="Almacen" name="warehouseProduct"> {% endcomment %} {{form.warehouseProduct}}
+                            </div>
+                            <div class="col-2 col-sm-2">
+                                {% comment %} <input class="form-control" type="text" placeholder="Stock" name="stock"> {% endcomment %} {{form.stock}}
+                            </div>
+                            <div class="col-2 col-sm-1">
+                                {% comment %}
+                                <div class="form-check">
+                                    <!-- <input class="form-control" type="text" placeholder="Estado" name="isActive"> -->
+                                    <input class="form-check-input" type="checkbox" id="isActive">
+                                    <label class="form-check-label" for="isActive">
+                                Activo
+                            </label> {% endcomment %} {{form.isActive}}
+                                </div>
+                            </div>
+                        </div>
+                        {% comment %}
+                        <div class="row">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                                <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                            </div>
+                            <div class="col-5 col-sm-6">
+                                <input class="form-control" type="file" placeholder="imagen" name="bigsize">
+                            </div>
+                        </div> {% endcomment %}
+                    </div>
+
+                </div>
+        </div>
+        {% comment %} {{form.as_p}} {% endcomment %}
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+        </form>
+    </div>
+</div>
