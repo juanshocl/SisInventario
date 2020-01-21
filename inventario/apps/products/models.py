@@ -94,4 +94,38 @@ class products(models.Model):
     
     get_warehouse.short_description = 'Almacen' 
 
+class user(models.Model):
+    USERSTYPE= (
+    (1,'admin'),
+    (2,'vendedor'),
+    (3,'propietario'),
+    )
+    rut = models.CharField(max_length=14, primary_key=True)
+    name = models.CharField(max_length=15)
+    last_name = models.CharField(max_length=15)
+    type = models.IntegerField(choices=USERSTYPE)
+
+class clients(models.Model):
+    rut = models.CharField(max_length=14, primary_key=True)
+    name = models.CharField(max_length=15)
+    last_name = models.CharField(max_length=15)
+    phone = models.CharField(max_length=14)
+
+class details(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    product  = models.ForeignKey(products, on_delete=models.CASCADE)
+
+class sales(models.Model):
+    id = models.AutoField(primary_key=True)
+    seller = models.ForeignKey(user, on_delete=models.CASCADE, default=None)
+    client = models.ForeignKey(clients, on_delete=models.CASCADE, default=None)
+    buyer_name = models.CharField(max_length=35)
+    date = models.DateTimeField(auto_now_add=True)
+    detail = models.ForeignKey(details, on_delete=models.CASCADE, default=None)
+    taxes = models.FloatField(max_length=10)
+    total = models.FloatField(max_length=15)
+
+
+
+
 
