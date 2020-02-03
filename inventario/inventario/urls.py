@@ -23,7 +23,7 @@ from apps.products.views import HomeList, CreateProduct, ListProducts, Statistic
 urlpatterns = [
     #url(r'^admin/', admin.site.urls),
     path('admin/', admin.site.urls),
-    path('', HomeList.as_view(), name='home'),
+    path('', HomeList, name='home'),
     path('create/', CreateProduct.as_view(), name='create'),
     path('list/', ListProducts.as_view(), name='list'),
     # path('edit/', ListProducts.as_view(), name='edit'),

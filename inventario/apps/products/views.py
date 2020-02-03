@@ -6,10 +6,17 @@ from apps.products.form import ProductForm
 # Create your views here.
 
 
-class HomeList(ListView):
-     model = products
-     template_name = 'home/home.html'
-     # ordering = ['id']
+# class HomeList(ListView):
+#      model = products
+#      template_name = 'home/home.html'
+#      # ordering = ['id']
+
+def HomeList(request):
+     almacen = warehouses.objects.order_by('descriptionWarehouse')
+     productos  = products.objects.order_by('id')
+     # total_ventas = 
+
+     return render(request, "home/home.html", {'almacen':almacen, 'productos':productos})
 
 class createp(CreateView):
     model = products

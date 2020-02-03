@@ -79,7 +79,7 @@ class products(models.Model):
     bigsize = models.ImageField(upload_to='static/img/bigsize', height_field=None, width_field=None, max_length=None, default=None, blank=True)
     warehouseProduct = models.ManyToManyField(warehouses)
     isActive = models.BooleanField(default=False)
-    stock = models.IntegerField(default=0)
+    # stock = models.IntegerField(default=0)
 
     class Meta:
             ordering = ["id"]
@@ -99,6 +99,8 @@ class user(models.Model):
     (1,'admin'),
     (2,'vendedor'),
     (3,'propietario'),
+    (4,'cliente'),
+
     )
     rut = models.CharField(max_length=14, primary_key=True)
     name = models.CharField(max_length=15)
@@ -121,11 +123,11 @@ class sales(models.Model):
     client = models.ForeignKey(clients, on_delete=models.CASCADE, default=None)
     buyer_name = models.CharField(max_length=35)
     date = models.DateTimeField(auto_now_add=True)
-    detail = models.ForeignKey(details, on_delete=models.CASCADE, default=None)
+    detail = models.ManyToManyField(details)
     taxes = models.FloatField(max_length=10)
     total = models.FloatField(max_length=15)
 
-
-
-
-
+    def get_details(self):
+        #return self.warehouseProduct.descriptionWarehouse
+        return ','.join([str(d.id) for d in self.detail.all()])
+        # return "\n".join([p.products for p in self.product.all()])
